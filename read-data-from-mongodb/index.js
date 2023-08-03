@@ -19,12 +19,14 @@
 
 const dbConnect= require('./mongodb');
 
+// Method 1 
 dbConnect().then((resp)=>{
-resp.find({name:'U10'}).toArray().then((data)=>{
-console.log(data)
-})
+    resp.find({name:'U10'}).toArray().then((data)=>{
+        console.log(data)
+    })
 })
 
+// Method 2 : Better method
 const main=async ()=>{
    let data = await dbConnect();
    data = await data.find({name:'U10'}).toArray();
